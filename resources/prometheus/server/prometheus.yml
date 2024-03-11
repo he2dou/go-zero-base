@@ -1,0 +1,89 @@
+global:
+  scrape_interval:
+  external_labels:
+    monitor: 'codelab-monitor'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 5s  #global catch time
+    static_configs:
+      - targets: ['127.0.0.1:9090']
+
+  - job_name: 'ocean-material'
+    static_configs:
+      - targets: [ 'looklook:4001' ]
+        labels:
+          job: ocean-material
+          app: ocean-material
+          env: dev
+  - job_name: 'ocean-auth'
+    static_configs:
+      - targets: [ 'looklook:4002' ]
+        labels:
+          job: ocean-auth
+          app: ocean-auth
+          env: dev
+  - job_name: 'ocean-mq'
+    static_configs:
+      - targets: [ 'looklook:4003' ]
+        labels:
+          job: ocean-mq
+          app: ocean-mq
+          env: dev
+  - job_name: 'payment-material'
+    static_configs:
+      - targets: [ 'looklook:4004' ]
+        labels:
+          job: payment-material
+          app: payment-material
+          env: dev
+  - job_name: 'payment-auth'
+    static_configs:
+      - targets: [ 'looklook:4005' ]
+        labels:
+          job: payment-auth
+          app: payment-auth
+          env: dev
+  - job_name: 'travel-material'
+    static_configs:
+      - targets: [ 'looklook:4006' ]
+        labels:
+          job: travel-material
+          app: travel-material
+          env: dev
+  - job_name: 'travel-auth'
+    static_configs:
+      - targets: [ 'looklook:4007' ]
+        labels:
+          job: travel-auth
+          app: travel-auth
+          env: dev
+  - job_name: 'usercenter-material'
+    static_configs:
+      - targets: ['looklook:4008']
+        labels:
+          job: usercenter-material
+          app: usercenter-material
+          env: dev
+  - job_name: 'usercenter-auth'
+    static_configs:
+      - targets: ['looklook:4009']
+        labels:
+          job: usercenter-auth
+          app: usercenter-auth
+          env: dev
+  - job_name: 'data-center-job'
+    static_configs:
+      - targets: [ 'looklook:4010' ]
+        labels:
+          job: data-center-job
+          app: data-center-job
+          env: dev
+  - job_name: 'data-center-scheduler'
+    static_configs:
+      - targets: [ 'looklook:4011' ]
+        labels:
+          job: data-center-scheduler
+          app: data-center-scheduler
+          env: dev
+

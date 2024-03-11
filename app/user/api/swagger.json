@@ -1,0 +1,586 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "",
+    "version": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/customer/add": {
+      "post": {
+        "operationId": "addCustomer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddCustomerResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddCustomerReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "customer"
+        ]
+      }
+    },
+    "/api/v1/customer/del": {
+      "post": {
+        "operationId": "delCustomer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteCustomerReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "customer"
+        ]
+      }
+    },
+    "/api/v1/customer/get/{id}": {
+      "get": {
+        "operationId": "queryCustomer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryCustomerResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "customer"
+        ]
+      }
+    },
+    "/api/v1/customer/list": {
+      "get": {
+        "operationId": "listCustomer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ListCustomerResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "user_name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "customer"
+        ]
+      }
+    },
+    "/api/v1/customer/update": {
+      "post": {
+        "operationId": "updateCustomer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateCustomerReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "customer"
+        ]
+      }
+    },
+    "/api/v1/user/add": {
+      "post": {
+        "summary": "用户新增",
+        "operationId": "addUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "/api/v1/user/del": {
+      "post": {
+        "summary": "用户删除",
+        "operationId": "delUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "/api/v1/user/query/{id}": {
+      "get": {
+        "summary": "用户查询",
+        "operationId": "queryUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "/api/v1/user/update": {
+      "post": {
+        "summary": "用户更新",
+        "operationId": "updateUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateUserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AddCustomerReq": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        }
+      },
+      "title": "AddCustomerReq",
+      "required": [
+        "account",
+        "password",
+        "nickName"
+      ]
+    },
+    "AddCustomerResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "AddCustomerResp",
+      "required": [
+        "id"
+      ]
+    },
+    "AddUserReq": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        }
+      },
+      "title": "AddUserReq",
+      "required": [
+        "account",
+        "password",
+        "nickName"
+      ]
+    },
+    "AddUserResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "AddUserResp",
+      "required": [
+        "id"
+      ]
+    },
+    "DeleteCustomerReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "DeleteCustomerReq",
+      "required": [
+        "id"
+      ]
+    },
+    "DeleteUserReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "DeleteUserReq",
+      "required": [
+        "id"
+      ]
+    },
+    "ListCustomerData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_name": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ListCustomerData",
+      "required": [
+        "id",
+        "user_name",
+        "-"
+      ]
+    },
+    "ListCustomerReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user_name": {
+          "type": "string"
+        }
+      },
+      "title": "ListCustomerReq",
+      "required": [
+        "page",
+        "page_size"
+      ]
+    },
+    "ListCustomerResp": {
+      "type": "object",
+      "properties": {
+        "": {
+          "$ref": "#/definitions/PageInfo"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ListCustomerData"
+          }
+        }
+      },
+      "title": "ListCustomerResp",
+      "required": [
+        "list"
+      ]
+    },
+    "PageInfo": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "PageInfo",
+      "required": [
+        "current",
+        "page_size",
+        "total"
+      ]
+    },
+    "QueryCustomerReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "QueryCustomerReq",
+      "required": [
+        "id"
+      ]
+    },
+    "QueryCustomerResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "account": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string"
+        }
+      },
+      "title": "QueryCustomerResp",
+      "required": [
+        "id",
+        "account",
+        "nickName",
+        "createTime"
+      ]
+    },
+    "QueryUserReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "QueryUserReq",
+      "required": [
+        "id"
+      ]
+    },
+    "QueryUserResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "account": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string"
+        }
+      },
+      "title": "QueryUserResp",
+      "required": [
+        "id",
+        "account",
+        "nickName",
+        "createTime"
+      ]
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Response",
+      "required": [
+        "code",
+        "message"
+      ]
+    },
+    "UpdateCustomerReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
+          "type": "string"
+        },
+        "industry": {
+          "type": "string"
+        }
+      },
+      "title": "UpdateCustomerReq",
+      "required": [
+        "id"
+      ]
+    },
+    "UpdateUserReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nickName": {
+          "type": "string"
+        }
+      },
+      "title": "UpdateUserReq",
+      "required": [
+        "id",
+        "nickName"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

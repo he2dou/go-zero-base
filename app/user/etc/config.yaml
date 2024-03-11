@@ -1,0 +1,19 @@
+Name: user-api
+Host: 0.0.0.0
+Port: 8888
+
+Auth:
+  AccessSecret: ad879037-c7a4-4063-9236-6bfc35d54b7d
+  AccessExpire: 86400
+
+Mysql:
+  Path: 192.168.0.137
+  Port: 3306
+  Dbname: test
+  Username: root
+  Password: donson.123
+  MaxIdleConns: 10
+  MaxOpenConns: 10
+  LogMode: "dev"
+  LogZap: false
+  Config: charset=utf8mb4&parseTime=True&loc=Local

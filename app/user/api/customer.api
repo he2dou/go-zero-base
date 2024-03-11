@@ -1,0 +1,70 @@
+syntax = "v1"
+
+import "base.api"
+
+type (
+    AddCustomerReq {
+        Account  string `json:"account"`
+        Password string `json:"password"`
+        NickName string `json:"nickName"`
+    }
+    AddCustomerResp {
+        Id int64 `json:"id"`
+    }
+    QueryCustomerReq {
+        Id int64 `path:"id"`
+    }
+    QueryCustomerResp {
+        Id         int64  `json:"id"`
+        Account    string `json:"account"`
+        NickName   string `json:"nickName"`
+        CreateTime string `json:"createTime"`
+    }
+    UpdateCustomerReq {
+        Id       int64  `json:"id"`
+        UserName string `json:"username,optional"`
+        Industry string `json:"industry,optional"`
+    }
+    DeleteCustomerReq {
+        Id int64 `json:"id"`
+    }
+    ListCustomerReq {
+        Page int `form:"page"`
+        PageSize    int `form:"page_size"`
+        UserName string `form:"user_name,optional"`
+    }
+    ListCustomerResp {
+        PageInfo
+        List []ListCustomerData `json:"list"`
+    }
+    ListCustomerData {
+        Id         int64  `json:"id"`
+        UserName   string `json:"user_name"`
+        Platform int `json:"-" gorm:"-"`
+    }
+)
+
+@server (
+    //jwt:     Auth // 对当前 Main 语法块下的所有路由，开启 jwt 认证
+    prefix:  /api/v1/customer // 对当前 Main 语法块下的所有路由，新增 /api_ipo 路由前缀
+    group:   customer // 对当前语法 Main 块下的所有路由，路由归并到 task_center 目录下
+    timeout: 180s // 对当前语法 Main 块下的所有路由进行超时配置
+    // middleware: AuthInterceptor  // 对当前 Main 语法块下的所有路由添加中间件
+    // maxBytes:   1048576 // 对当前 Main 语法块下的所有路由添加请求体大小控制，单位为 byte,goctl 版本 >= 1.5.0 才支持
+)
+service Main {
+    @handler queryCustomer
+    get /get/:id (QueryCustomerReq) returns (QueryCustomerResp)
+
+    @handler addCustomer
+    post /add (AddCustomerReq) returns (AddCustomerResp)
+
+    @handler updateCustomer
+    post /update (UpdateCustomerReq)
+
+    @handler delCustomer
+    post /del (DeleteCustomerReq)
+
+    @handler listCustomer
+    get /list (ListCustomerReq) returns (ListCustomerResp)
+}

@@ -1,0 +1,13 @@
+syntax = "v1"
+
+// 分页信息
+type PageInfo {
+	Current        int `json:"current"`
+	PageSize    int `json:"page_size"`
+	Total int64 `json:"total"`
+}
+
+type Response {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+}

@@ -1,0 +1,63 @@
+syntax = "v1"
+
+type (
+	AddUserReq {
+		Account  string `json:"account"`
+		Password string `json:"password"`
+		NickName string `json:"nickName"`
+	}
+	AddUserResp {
+		Id int64 `json:"id"`
+	}
+	QueryUserReq {
+		Id int64 `path:"id"`
+	}
+	QueryUserResp {
+		Id         int64  `json:"id"`
+		Account    string `json:"account"`
+		NickName   string `json:"nickName"`
+		CreateTime string `json:"createTime"`
+	}
+	UpdateUserReq {
+		Id       int64  `json:"id"`
+		NickName string `json:"nickName"`
+	}
+	DeleteUserReq {
+		Id int64 `json:"id"`
+	}
+)
+
+@server (
+	jwt:     Auth // 对当前 Main 语法块下的所有路由，开启 jwt 认证
+	prefix:  /api/v1/user // 对当前 Main 语法块下的所有路由，新增 /api_ipo 路由前缀
+	group:   user // 对当前语法 Main 块下的所有路由，路由归并到 task_center 目录下
+	timeout: 180s // 对当前语法 Main 块下的所有路由进行超时配置
+// middleware: AuthInterceptor  // 对当前 Main 语法块下的所有路由添加中间件
+// maxBytes:   1048576 // 对当前 Main 语法块下的所有路由添加请求体大小控制，单位为 byte,goctl 版本 >= 1.5.0 才支持
+)
+service Main {
+	@doc (
+		summary: "用户查询"
+	)
+	@handler queryUser
+	get /query/:id (QueryUserReq) returns (QueryUserResp)
+
+	@doc (
+		summary: "用户新增"
+	)
+	@handler addUser
+	post /add (AddUserReq) returns (AddUserResp)
+
+	@doc (
+		summary: "用户更新"
+	)
+	@handler updateUser
+	post /update (UpdateUserReq)
+
+	@doc (
+		summary: "用户删除"
+	)
+	@handler delUser
+	post /del (DeleteUserReq)
+}
+

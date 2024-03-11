@@ -1,0 +1,12 @@
+syntax = "v1"
+
+import "user.api"
+import "customer.api"
+
+info (
+	title:   "gormc example"
+	desc:    "gorm go zero example"
+	author:  "spectatorNan"
+	version: "1.0.0"
+)
+

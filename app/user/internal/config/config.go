@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/zeromicro/go-zero/rest"
-	"go-zero-base/common/pkg/gormx/config/mysql"
+	"go-zero-base/common/gormx/config/mysql"
 )
 
 type Config struct {

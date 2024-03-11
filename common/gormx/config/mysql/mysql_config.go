@@ -3,7 +3,7 @@ package mysql
 import (
 	"errors"
 	"fmt"
-	"go-zero-base/common/pkg/gormx/config"
+	"go-zero-base/common/gormx/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

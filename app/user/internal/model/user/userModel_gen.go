@@ -5,7 +5,7 @@ package user
 import (
 	"context"
 	"database/sql"
-	"go-zero-base/common/pkg/gormx"
+	"go-zero-base/common/gormx"
 	"time"
 
 	"gorm.io/gorm"

@@ -3,7 +3,7 @@ package pg
 import (
 	"errors"
 	"fmt"
-	"go-zero-base/common/pkg/gormx/config"
+	"go-zero-base/common/gormx/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

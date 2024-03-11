@@ -5,7 +5,7 @@ import (
 	"go-zero-base/app/user/internal/config"
 	"go-zero-base/app/user/internal/model/customer"
 	"go-zero-base/app/user/internal/model/user"
-	"go-zero-base/common/pkg/gormx/config/mysql"
+	"go-zero-base/common/gormx/config/mysql"
 	"log"
 )
 
